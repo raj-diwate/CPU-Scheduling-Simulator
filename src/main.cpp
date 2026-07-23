@@ -3,18 +3,149 @@
 #include "ui.h"
 #include <iostream>
 #include <vector>
+#include <limits>
+#include <unordered_set>
 
 void inputProcesses(std::vector<Process> &processes)
 {
     int n;
-    std::cout << "Enter the number of processes: ";
-    std::cin >> n;
+
+    while (true)
+    {
+        std::cout << "Enter the number of processes: ";
+
+        if (!(std::cin >> n))
+        {
+            std::cout << "\nInvalid input! Please enter a number.\n\n";
+
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (n <= 0)
+        {
+            std::cout << "\nNumber of processes must be greater than 0.\n\n";
+            continue;
+        }
+
+        break;
+    }
+
+    std::unordered_set<int> usedPID;
 
     for (int i = 0; i < n; ++i)
     {
         int pid, arrival, burst, priority;
-        std::cout << "Enter Process ID, Arrival Time, Burst Time, and Priority for Process " << i + 1 << ": ";
-        std::cin >> pid >> arrival >> burst >> priority;
+
+        std::cout << "\n=========================================\n";
+        std::cout << "          PROCESS " << i + 1 << " DETAILS\n";
+        std::cout << "=========================================\n";
+
+        // PID
+        while (true)
+        {
+            std::cout << "PID           : ";
+            std::cin >> pid;
+
+           
+ 
+            if (std::cin.fail())
+            {
+                std::cout << "Invalid PID.\n";
+
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+             if (pid <= 0)
+           {
+                 std::cout << "PID must be greater than 0.\n";
+                 continue;
+            }
+
+            if (usedPID.count(pid))
+            {
+                std::cout << "PID already exists. Enter a unique PID.\n";
+                continue;
+            }
+
+            usedPID.insert(pid);
+            break;
+        }
+
+        // Arrival Time
+        while (true)
+        {
+            std::cout << "Arrival Time  : ";
+            std::cin >> arrival;
+
+            if (std::cin.fail())
+            {
+                std::cout << "Invalid arrival time.\n";
+
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+
+            if (arrival < 0)
+            {
+                std::cout << "Arrival time cannot be negative.\n";
+                continue;
+            }
+
+            break;
+        }
+
+        // Burst Time
+        while (true)
+        {
+            std::cout << "Burst Time    : ";
+            std::cin >> burst;
+
+            if (std::cin.fail())
+            {
+                std::cout << "Invalid burst time.\n";
+
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+
+            if (burst <= 0)
+            {
+                std::cout << "Burst time must be greater than 0.\n";
+                continue;
+            }
+
+            break;
+        }
+
+        // Priority
+        while (true)
+        {
+            std::cout << "Priority      : ";
+            std::cin >> priority;
+
+            if (std::cin.fail())
+            {
+                std::cout << "Invalid priority.\n";
+
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+
+            if (priority <= 0)
+            {
+                std::cout << "Priority must be greater than 0.\n";
+                continue;
+            }
+
+            break;
+        }
+
         processes.emplace_back(pid, arrival, burst, priority);
     }
 }
@@ -34,7 +165,28 @@ int main()
     std::cout << "7. Multilevel Feedback Queue Scheduling\n";
     std::cout << "8. Multilevel Queue Scheduling\n";
     int choice;
-    std::cin >> choice;
+
+while (true)
+{
+    std::cout << "\nSelect Scheduling Algorithm (1-8): ";
+
+    if (!(std::cin >> choice))
+    {
+        std::cout << "\nInvalid input! Please enter a number.\n";
+
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        continue;
+    }
+
+    if (choice < 1 || choice > 8)
+    {
+        std::cout << "\nPlease enter a choice between 1 and 8.\n";
+        continue;
+    }
+
+    break;
+}
 
     switch (choice)
     {
@@ -53,8 +205,27 @@ int main()
     case 3:
     {
         int time_quantum;
-        std::cout << "Enter Time Quantum for Round Robin: ";
-        std::cin >> time_quantum;
+        while (true)
+{
+    std::cout << "Enter Time Quantum: ";
+
+    if (!(std::cin >> time_quantum))
+    {
+        std::cout << "Invalid input.\n";
+
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        continue;
+    }
+
+    if (time_quantum <= 0)
+    {
+        std::cout << "Time Quantum must be greater than 0.\n";
+        continue;
+    }
+
+    break;
+}
         RoundRobin_Scheduling(processes, time_quantum);
         std::cout << "\nAfter Round Robin Scheduling:\n";
         displayProcesses(processes);

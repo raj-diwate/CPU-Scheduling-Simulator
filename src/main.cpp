@@ -192,13 +192,21 @@ while (true)
     {
     case 1:
         FCFS_Scheduling(processes);
+
         std::cout << "\nAfter FCFS Scheduling:\n";
+
+        displayGanttChart(processes);
+
         displayProcesses(processes);
         break;
 
     case 2:
         SJF_Scheduling(processes);
+
         std::cout << "\nAfter SJF Scheduling:\n";
+
+        displayGanttChart(processes);
+
         displayProcesses(processes);
         break;
 
@@ -233,14 +241,22 @@ while (true)
     }
 
     case 4:
-        Priority_Scheduling(processes);
+       Priority_Scheduling(processes);
+
         std::cout << "\nAfter Priority Scheduling:\n";
+
+        displayGanttChart(processes);
+
         displayProcesses(processes, true);
         break;
 
     case 5:
         HRRN_Scheduling(processes);
+
         std::cout << "\nAfter HRRN Scheduling:\n";
+
+        displayGanttChart(processes);
+
         displayProcesses(processes);
         break;
 

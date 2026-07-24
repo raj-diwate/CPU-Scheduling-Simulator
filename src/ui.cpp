@@ -67,3 +67,33 @@ void displayProcesses(const std::vector<Process> &processes, bool show_priority)
                   << p.turnaround_time << "\t \t" << p.completion_time << "\n";
     }
 }
+
+
+
+double calculateCPUUtilization(const std::vector<Process>& processes)
+{
+    if (processes.empty())
+        return 0.0;
+
+    int totalBurst = 0;
+    int firstArrival = processes[0].arrival_time;
+    int lastCompletion = processes[0].completion_time;
+
+    for (const auto &p : processes)
+    {
+        totalBurst += p.burst_time;
+
+        if (p.arrival_time < firstArrival)
+            firstArrival = p.arrival_time;
+
+        if (p.completion_time > lastCompletion)
+            lastCompletion = p.completion_time;
+    }
+
+    int totalTime = lastCompletion - firstArrival;
+
+    if (totalTime == 0)
+        return 100.0;
+
+    return (double)totalBurst * 100.0 / totalTime;
+}

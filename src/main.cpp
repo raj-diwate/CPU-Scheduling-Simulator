@@ -5,6 +5,7 @@
 #include <vector>
 #include <limits>
 #include <unordered_set>
+#include <iomanip>
 
 void inputProcesses(std::vector<Process> &processes)
 {
@@ -195,9 +196,16 @@ while (true)
 
         std::cout << "\nAfter FCFS Scheduling:\n";
 
+        
+
         displayGanttChart(processes);
 
         displayProcesses(processes);
+
+        std::cout << "\nCPU Utilization : "
+          << std::fixed << std::setprecision(2)
+          << calculateCPUUtilization(processes)
+          << "%\n";
         break;
 
     case 2:
@@ -207,7 +215,12 @@ while (true)
 
         displayGanttChart(processes);
 
-        displayProcesses(processes);
+displayProcesses(processes);
+
+std::cout << "\nCPU Utilization : "
+          << std::fixed << std::setprecision(2)
+          << calculateCPUUtilization(processes)
+          << "%\n";
         break;
 
     case 3:
@@ -235,8 +248,19 @@ while (true)
     break;
 }
         RoundRobin_Scheduling(processes, time_quantum);
-        std::cout << "\nAfter Round Robin Scheduling:\n";
-        displayProcesses(processes);
+
+std::cout << "\nAfter Round Robin Scheduling:\n";
+
+displayGanttChart(processes);
+
+displayProcesses(processes);
+
+std::cout << "\nCPU Utilization : "
+          << std::fixed
+          << std::setprecision(2)
+          << calculateCPUUtilization(processes)
+          << "%\n";
+          
         break;
     }
 
@@ -247,7 +271,12 @@ while (true)
 
         displayGanttChart(processes);
 
-        displayProcesses(processes, true);
+       displayProcesses(processes, true);
+
+std::cout << "\nCPU Utilization : "
+          << std::fixed << std::setprecision(2)
+          << calculateCPUUtilization(processes)
+          << "%\n";
         break;
 
     case 5:
@@ -258,6 +287,11 @@ while (true)
         displayGanttChart(processes);
 
         displayProcesses(processes);
+
+std::cout << "\nCPU Utilization : "
+          << std::fixed << std::setprecision(2)
+          << calculateCPUUtilization(processes)
+          << "%\n";
         break;
 
     case 6:

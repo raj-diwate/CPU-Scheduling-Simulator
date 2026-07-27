@@ -210,9 +210,13 @@ while (true)
         std::cout << "Average Turnaround Time : "
           << calculateAverageTurnaroundTime(processes) << "\n";
 
-        std::cout << "CPU Utilization : "
+       std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
+
+std::cout << "Throughput : "
+          << calculateThroughput(processes)
+          << " processes/unit time\n";
         break;
 
     case 2:
@@ -235,6 +239,10 @@ while (true)
         std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
+
+std::cout << "Throughput : "
+          << calculateThroughput(processes)
+          << " processes/unit time\n";
         break;
 
     case 3:
@@ -277,9 +285,13 @@ while (true)
           std::cout << "Average Turnaround Time : "
           << calculateAverageTurnaroundTime(processes) << "\n";
 
-          std::cout << "CPU Utilization : "
+         std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
+
+std::cout << "Throughput : "
+          << calculateThroughput(processes)
+          << " processes/unit time\n";
           
         break;
     }
@@ -304,6 +316,10 @@ while (true)
         std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
+
+std::cout << "Throughput : "
+          << calculateThroughput(processes)
+          << " processes/unit time\n";
         break;
 
     case 5:
@@ -323,9 +339,13 @@ while (true)
         std::cout << "Average Turnaround Time : "
           << calculateAverageTurnaroundTime(processes) << "\n";
 
-           std::cout << "CPU Utilization : "
+          std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
+
+std::cout << "Throughput : "
+          << calculateThroughput(processes)
+          << " processes/unit time\n";
         break;
 
     case 6:

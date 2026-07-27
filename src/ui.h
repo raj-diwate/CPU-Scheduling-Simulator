@@ -9,5 +9,5 @@ double calculateCPUUtilization(const std::vector<Process>& processes);
 double calculateAverageWaitingTime(const std::vector<Process>& processes);
 
 double calculateAverageTurnaroundTime(const std::vector<Process>& processes);
-
+double calculateThroughput(const std::vector<Process>& processes);
 #endif

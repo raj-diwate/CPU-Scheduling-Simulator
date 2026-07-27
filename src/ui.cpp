@@ -1,5 +1,6 @@
 #include "ui.h"
 #include <iostream>
+#include<algorithm>
 #include <iomanip>
 
 
@@ -96,6 +97,27 @@ double calculateCPUUtilization(const std::vector<Process>& processes)
         return 100.0;
 
     return (double)totalBurst * 100.0 / totalTime;
+}
+double calculateThroughput(const std::vector<Process>& processes)
+{
+    if (processes.empty())
+        return 0.0;
+
+    int firstArrival = processes[0].arrival_time;
+    int lastCompletion = processes[0].completion_time;
+
+    for (const auto& process : processes)
+    {
+        firstArrival = std::min(firstArrival, process.arrival_time);
+        lastCompletion = std::max(lastCompletion, process.completion_time);
+    }
+
+    int totalTime = lastCompletion - firstArrival;
+
+    if (totalTime == 0)
+        return 0.0;
+
+    return static_cast<double>(processes.size()) / totalTime;
 }
 
 double calculateAverageWaitingTime(const std::vector<Process>& processes)

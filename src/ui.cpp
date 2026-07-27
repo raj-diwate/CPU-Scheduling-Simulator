@@ -97,3 +97,38 @@ double calculateCPUUtilization(const std::vector<Process>& processes)
 
     return (double)totalBurst * 100.0 / totalTime;
 }
+
+double calculateAverageWaitingTime(const std::vector<Process>& processes)
+{
+    if (processes.empty())
+    {
+        return 0.0;
+    }
+
+    int totalWaitingTime = 0;
+
+    for (const auto& process : processes)
+    {
+        totalWaitingTime += process.waiting_time;
+    }
+
+    return static_cast<double>(totalWaitingTime) / processes.size();
+}
+
+
+double calculateAverageTurnaroundTime(const std::vector<Process>& processes)
+{
+    if (processes.empty())
+    {
+        return 0.0;
+    }
+
+    int totalTurnaroundTime = 0;
+
+    for (const auto& process : processes)
+    {
+        totalTurnaroundTime += process.turnaround_time;
+    }
+
+    return static_cast<double>(totalTurnaroundTime) / processes.size();
+}

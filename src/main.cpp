@@ -202,8 +202,15 @@ while (true)
 
         displayProcesses(processes);
 
-        std::cout << "\nCPU Utilization : "
-          << std::fixed << std::setprecision(2)
+        std::cout << std::fixed << std::setprecision(2);
+
+        std::cout << "\nAverage Waiting Time : "
+          << calculateAverageWaitingTime(processes) << "\n";
+
+        std::cout << "Average Turnaround Time : "
+          << calculateAverageTurnaroundTime(processes) << "\n";
+
+        std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
         break;
@@ -213,12 +220,19 @@ while (true)
 
         std::cout << "\nAfter SJF Scheduling:\n";
 
-        displayGanttChart(processes);
+       displayGanttChart(processes);
 
-displayProcesses(processes);
+       displayProcesses(processes);
 
-std::cout << "\nCPU Utilization : "
-          << std::fixed << std::setprecision(2)
+       std::cout << std::fixed << std::setprecision(2);
+
+       std::cout << "\nAverage Waiting Time : "
+          << calculateAverageWaitingTime(processes) << "\n";
+
+       std::cout << "Average Turnaround Time : "
+          << calculateAverageTurnaroundTime(processes) << "\n";
+
+        std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
         break;
@@ -249,15 +263,21 @@ std::cout << "\nCPU Utilization : "
 }
         RoundRobin_Scheduling(processes, time_quantum);
 
-std::cout << "\nAfter Round Robin Scheduling:\n";
+       std::cout << "\nAfter Round Robin Scheduling:\n";
 
-displayGanttChart(processes);
+        displayGanttChart(processes);
 
-displayProcesses(processes);
+        displayProcesses(processes);
 
-std::cout << "\nCPU Utilization : "
-          << std::fixed
-          << std::setprecision(2)
+          std::cout << std::fixed << std::setprecision(2);
+
+          std::cout << "\nAverage Waiting Time : "
+          << calculateAverageWaitingTime(processes) << "\n";
+
+          std::cout << "Average Turnaround Time : "
+          << calculateAverageTurnaroundTime(processes) << "\n";
+
+          std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
           
@@ -271,10 +291,17 @@ std::cout << "\nCPU Utilization : "
 
         displayGanttChart(processes);
 
-       displayProcesses(processes, true);
+         displayProcesses(processes, true);
 
-std::cout << "\nCPU Utilization : "
-          << std::fixed << std::setprecision(2)
+        std::cout << std::fixed << std::setprecision(2);
+
+        std::cout << "\nAverage Waiting Time : "
+          << calculateAverageWaitingTime(processes) << "\n";
+
+         std::cout << "Average Turnaround Time : "
+          << calculateAverageTurnaroundTime(processes) << "\n";
+
+        std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
         break;
@@ -288,8 +315,15 @@ std::cout << "\nCPU Utilization : "
 
         displayProcesses(processes);
 
-std::cout << "\nCPU Utilization : "
-          << std::fixed << std::setprecision(2)
+        std::cout << std::fixed << std::setprecision(2);
+
+        std::cout << "\nAverage Waiting Time : "
+          << calculateAverageWaitingTime(processes) << "\n";
+
+        std::cout << "Average Turnaround Time : "
+          << calculateAverageTurnaroundTime(processes) << "\n";
+
+           std::cout << "CPU Utilization : "
           << calculateCPUUtilization(processes)
           << "%\n";
         break;
